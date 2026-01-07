@@ -36,6 +36,7 @@ dev = [
 ]
 
 [project.scripts]
+fastapply-mcp = "fastapply_mcp.main:main"
 fastapply_mcp = "fastapply_mcp.main:main"
 
 [tool.ruff]

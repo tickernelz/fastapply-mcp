@@ -3,8 +3,8 @@ build-backend = "hatchling.build"
 requires = ["hatchling"]
 
 [project]
-name = "fastapply-mcp"
-version = "1.0.0"
+name = "fastapply_mcp"
+version = "1.0.1"
 description = "MCP server for AI-powered code editing through FastApply integration"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -36,7 +36,7 @@ dev = [
 ]
 
 [project.scripts]
-fastapply-mcp = "fastapply-mcp.main:main"
+fastapply_mcp = "fastapply_mcp.main:main"
 
 [tool.ruff]
 line-length = 140

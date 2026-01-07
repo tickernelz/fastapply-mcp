@@ -210,7 +210,7 @@ The server implements multiple security layers:
 ```
 fastapply-mcp/
 ├── src/
-│   └── fastapply/
+│   └── fastapply-mcp/
 │       ├── __init__.py
 │       └── main.py          # Core server implementation
 ├── .env.example

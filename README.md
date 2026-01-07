@@ -24,13 +24,23 @@ FastApply MCP Server enables intelligent code editing by connecting MCP-compatib
 
 ### Setup
 
+#### Using uvx (Recommended)
+
+Run directly without installation:
+
+```bash
+uvx fastapply-mcp
+```
+
+#### Manual Installation
+
 Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/your-org/fastapply-mcp.git
 cd fastapply-mcp
 
-# Using uv (recommended)
+# Using uv
 uv sync
 source .venv/bin/activate
 uv pip install -e .
@@ -82,6 +92,25 @@ Add the server to your Claude Desktop configuration file:
 
 **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+#### Using uvx (Recommended)
+
+```json
+{
+  "mcpServers": {
+    "fastapply": {
+      "command": "uvx",
+      "args": ["fastapply-mcp"],
+      "env": {
+        "FAST_APPLY_URL": "http://localhost:1234/v1",
+        "FAST_APPLY_MODEL": "fastapply-1.5b"
+      }
+    }
+  }
+}
+```
+
+#### Manual Installation
 
 ```json
 {

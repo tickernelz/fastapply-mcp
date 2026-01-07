@@ -4,7 +4,7 @@ requires = ["hatchling"]
 
 [project]
 name = "fastapply_mcp"
-version = "1.0.1"
+version = "1.0.3"
 description = "MCP server for AI-powered code editing through FastApply integration"
 readme = "README.md"
 requires-python = ">=3.13"

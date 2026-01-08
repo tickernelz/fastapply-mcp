@@ -98,9 +98,6 @@ def _secure_resolve(path: str) -> str:
     raise ValueError(f"Path escapes workspace: {original}")
 
 
-
-
-
 # Official Fast Apply template constants
 FAST_APPLY_SYSTEM_PROMPT = """You are a coding assistant that helps merge code updates, ensuring every modification is fully integrated."""
 
@@ -643,26 +640,6 @@ class FastApplyConnector:
             "temperature": self.temperature,
         }
 
-    def _analyze_response_format(self, raw_response: str) -> Dict[str, Any]:
-        """Analyze the format and content of a Fast Apply API response for debugging."""
-        analysis = {
-            "total_length": len(raw_response),
-            "has_xml_tags": UPDATED_CODE_START in raw_response and UPDATED_CODE_END in raw_response,
-            "has_markdown_fences": raw_response.strip().startswith("```") or raw_response.strip().endswith("```"),
-            "line_count": len(raw_response.splitlines()),
-            "starts_with_code_tag": raw_response.strip().startswith("<updated-code>"),
-            "ends_with_code_tag": raw_response.strip().endswith("</updated-code>"),
-            "first_200_chars": raw_response[:200] + "..." if len(raw_response) > 200 else raw_response,
-            "last_200_chars": raw_response[-200:] + "..." if len(raw_response) > 200 else raw_response,
-        }
-
-        if analysis["has_xml_tags"]:
-            start_idx = raw_response.find(UPDATED_CODE_START)
-            end_idx = raw_response.find(UPDATED_CODE_END) + len(UPDATED_CODE_END)
-            analysis["xml_content_length"] = end_idx - start_idx
-
-        return analysis
-
 
 def write_with_backup(path: str, new_content: str) -> str:
     """Atomically write file with timestamped backup under lock.
@@ -728,7 +705,6 @@ mcp = FastMCP("fast-apply-mcp")
 fast_apply_connector = FastApplyConnector()
 
 # Initialize enhanced search infrastructure
-
 
 
 def json_dumps(obj: Any) -> str:
